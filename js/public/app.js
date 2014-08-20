@@ -1100,11 +1100,6 @@
           this._$scope.toggleHidden = function() {
             return _settingsbusinesslayer.toggle('various', 'showHidden');
           };
-          this._$scope.filterCalendar = function() {
-        	  return function( task ){
-        		  return task.calendarid == _$scope.route.listID;
-        	  };
-          };
           this._$scope.filterTasks = function() {
             return function(task) {
               switch (_$scope.route.listID) {
@@ -1124,6 +1119,11 @@
           this._$scope.filterLists = function() {
             return function(list) {
               return _$scope.getCount(list.id, _$scope.route.listID);
+            };
+          };
+          this._$scope.filterTasksByList = function() {
+            return function(task) {
+              return _$scope.route.listID === task.calendarid;
             };
           };
           this._$scope.getCount = function(listID, type) {
